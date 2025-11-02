@@ -1,5 +1,7 @@
 FROM python:3
-RUN pip install django==3.2
+# Install distutils and Django
+RUN apt-get update && apt-get install -y python3-distutils \
+    && pip install django==3.2
 
 COPY python-jenkins-argocd-k8s /app
 WORKDIR /app
