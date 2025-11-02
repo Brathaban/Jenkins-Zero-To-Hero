@@ -1,6 +1,6 @@
 FROM python:3
-# Install distutils and Django
-RUN apt-get update && apt-get install -y python3-distutils \
+
+RUN apt-get update && apt-get install -y python3-venv python3-setuptools \
     && pip install django==3.2
 
 COPY python-jenkins-argocd-k8s /app
