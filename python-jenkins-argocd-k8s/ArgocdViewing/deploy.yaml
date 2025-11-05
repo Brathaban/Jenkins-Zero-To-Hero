@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo
-        image: brathaban123/cicd-e2e:140
+        image: brathaban123/cicd-e2e:141
         ports:
         - containerPort: 8000
