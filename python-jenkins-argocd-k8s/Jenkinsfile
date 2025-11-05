@@ -42,7 +42,7 @@ pipeline {
                 cd python-jenkins-argocd-k8s/deploy
                 sed -i "s|brathaban123/cicd-e2e:.*|brathaban123/cicd-e2e:${IMAGE_TAG}|g" deploy.yaml
                 echo 'Updating deploy.yaml in Argocd-viewing with new image tag'
-                cd python-jenkins-argocd-k8s/ArgocdViewing
+                cd /var/lib/jenkins/workspace/todo-app-pipeline/python-jenkins-argocd-k8s/ArgocdViewing
                 sed -i "s|brathaban123/cicd-e2e:.*|brathaban123/cicd-e2e:${IMAGE_TAG}|g" deploy.yaml
                 cat deploy.yaml
                 '''
