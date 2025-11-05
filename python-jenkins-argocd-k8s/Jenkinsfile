@@ -35,16 +35,20 @@ pipeline {
             }
         }
 
-        stage('Update K8s Manifest') {
+       stage('Update K8s Manifest') {
             steps {
                 sh '''
-                echo 'Updating deploy.yaml with new image tag'
+                 echo 'Updating deploy.yaml in main deploy file with new image tag'
+                cd python-jenkins-argocd-k8s/deploy
+                sed -i "s|brathaban123/cicd-e2e:.*|brathaban123/cicd-e2e:${IMAGE_TAG}|g" deploy.yaml
+                echo 'Updating deploy.yaml in Argocd-viewing with new image tag'
                 cd python-jenkins-argocd-k8s/ArgocdViewing
                 sed -i "s|brathaban123/cicd-e2e:.*|brathaban123/cicd-e2e:${IMAGE_TAG}|g" deploy.yaml
                 cat deploy.yaml
                 '''
             }
         }
+
 
         stage('Commit & Push Changes') {
             steps {
